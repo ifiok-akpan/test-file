@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Author: Ifiok
+# Date: 23/10/2024
+
 # test-file: Evaluate the status of a file
 read -p "Please Enter filename: " FILE
 # FILE=~/.bashrc
