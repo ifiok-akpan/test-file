@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Author: Ifiok
+# Date: 23/10/2024
+
+# test-file: Evaluate the status of a file and optionally delete it
+
+read -p "Please Enter filename: " FILE
+
+# Check if the file exists
+if [ -e "$FILE" ]; then
+    # Check if it is a regular file
+    if [ -f "$FILE" ]; then
+        echo "$FILE: is a regular file"
+    fi
+    # Check if it is a directory
+    if [ -d "$FILE" ]; then
+        echo "$FILE: is a directory"
+    else
+        echo "$FILE: is not a directory"
+    fi
+    # Check if the file is readable
+    if [ -r "$FILE" ]; then
+        echo "$FILE: is readable"
+    fi
+    # Check if the file is writable
+    if [ -w "$FILE" ]; then
+        echo "$FILE: is writable"
+    fi
+    # Check if the file is executable
+    if [ -x "$FILE" ]; then
+        echo "$FILE: is executable"
+    else
+        echo "$FILE: is not executable"
+    fi
+
+    # Ask user if they want to delete the file
+    read -p "Do you want to delete this file? (y/n): " CONFIRM
+
+    if [[ "$CONFIRM" == "y" || "$CONFIRM" == "Y" ]]; then
+        rm -r "$FILE"  # Use -r to handle directories as well
+        if [ $? -eq 0 ]; then
+            echo "$FILE has been deleted."
+        else
+            echo "Failed to delete $FILE."
+        fi
+    else
+        echo "File not deleted. Program terminated."
+        exit 0
+    fi
+else
+    echo "$FILE does not exist."
+    exit 1
+fi
+
+exit 0
+
