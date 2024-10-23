@@ -1,5 +1,5 @@
 # test-file
-								Bash scripting
+Bash scripting
 
 This script will Evaluate the status of a file.
 
